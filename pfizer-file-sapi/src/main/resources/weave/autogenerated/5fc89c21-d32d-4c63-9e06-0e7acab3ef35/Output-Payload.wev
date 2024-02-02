@@ -1,0 +1,9 @@
+%dw 2.0
+
+type auto_5fc89c21_d32d_4c63_9e06_0e7acab3ef35_Output_Payload = {
+  code?: Number, 
+  correlationID?: String, 
+  message?: String, 
+  _?: Any
+}
+

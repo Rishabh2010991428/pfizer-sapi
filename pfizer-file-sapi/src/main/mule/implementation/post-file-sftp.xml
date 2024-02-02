@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd">
+	<flow name="post-file-sftp-sub-flow" doc:id="1c6fd4b3-868d-4c5c-9af5-abc6881f7ecb" >
+		<file:write doc:id="83f91a27-73b1-4276-974f-f73a565e143e" path="src\main\resources\products.json" mode="APPEND" doc:name="Write products file"/>
+		<ee:transform doc:name="Transform Message" doc:id="7565f420-d9a1-47d9-b747-17c294b681d0" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+  status: 201,
+  message: "The products data was written in the file",
+  correlationID: "sdfgh656785678i6d7get76udg"
+} as Object {encoding: "UTF-8", mediaType: "application/json"}]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+</mule>

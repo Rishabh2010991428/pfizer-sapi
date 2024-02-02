@@ -1,0 +1,12 @@
+%dw 2.0
+
+type auto_1c6fd4b3_868d_4c5c_9af5_abc6881f7ecb_Input_Payload = {
+  Discontinued?: Boolean, 
+  ProductName?: String, 
+  ProductId?: Number, 
+  InventoryStockUnits?: Number, 
+  CostPerItem?: Number, 
+  Taxable?: Boolean, 
+  _?: Any
+}
+

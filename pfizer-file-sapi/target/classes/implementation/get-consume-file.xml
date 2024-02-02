@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:email="http://www.mulesoft.org/schema/mule/email" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/email http://www.mulesoft.org/schema/mule/email/current/mule-email.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="49c5172d-13fd-4dbe-b06c-48ef64f9e9ac" />
+	<flow name="get-consume-file-sub-flow" doc:id="85a863f8-5e30-49d1-982c-c4b3577aac21" >
+		<file:read doc:name="Read products file" doc:id="bbc8cf8a-5cb9-4bf8-8294-696b31566205" config-ref="File_Config" path="src\main\resources\products.json"/>
+		<file:delete doc:name="Delete products file" doc:id="2190d6e3-654f-488a-9610-0e8c96a0af3c" config-ref="File_Config" path="src\main\resources\products.json"/>
+		<ee:transform doc:name="Transform Message">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+	</flow>
+</mule>

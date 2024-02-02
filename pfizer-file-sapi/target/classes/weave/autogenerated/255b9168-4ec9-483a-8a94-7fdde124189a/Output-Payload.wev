@@ -1,0 +1,8 @@
+%dw 2.0
+
+type auto_255b9168_4ec9_483a_8a94_7fdde124189a_Output_Payload = {|
+  appName: String | Null, 
+  status: String, 
+  timeStamp: DateTime
+|}
+
